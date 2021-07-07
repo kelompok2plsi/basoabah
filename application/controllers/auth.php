@@ -5,23 +5,41 @@ class auth extends CI_Controller
 {
   public function index()
   {
-    $this->load->view('home/index');
+    if ($this->session->userdata('level') == 'user') {
+      redirect('user/menu');
+    } elseif ($this->session->userdata('level') == 'admin') {
+      redirect('admin');
+    } else {
+      $this->load->view('home/index');
+    }
   }
 
   public function menu()
   {
-    $data['menu'] = $this->m_user->read();
-    $this->load->view('home/menu', $data);
+    if ($this->session->userdata('level') == 'user') {
+      redirect('user/menu');
+    } elseif ($this->session->userdata('level') == 'admin') {
+      redirect('admin');
+    } else {
+      $data['menu'] = $this->m_user->read();
+      $this->load->view('home/menu', $data);
+    }
   }
 
   public function masuk()
   {
-    $this->form_validation->set_rules('email', 'Email', 'required|trim');
-    $this->form_validation->set_rules('password', 'Password', 'required|trim');
-    if ($this->form_validation->run() == false) {
-      $this->load->view('home/masuk');
+    if ($this->session->userdata('level') == 'user') {
+      redirect('user/menu');
+    } elseif ($this->session->userdata('level') == 'admin') {
+      redirect('admin');
     } else {
-      $this->_masuk();
+      $this->form_validation->set_rules('email', 'Email', 'required|trim');
+      $this->form_validation->set_rules('password', 'Password', 'required|trim');
+      if ($this->form_validation->run() == false) {
+        $this->load->view('home/masuk');
+      } else {
+        $this->_masuk();
+      }
     }
   }
 
@@ -35,10 +53,12 @@ class auth extends CI_Controller
       if (password_verify($password, $user['password'])) {
         if ($user['role_id'] == 1) {
           $this->session->set_userdata('login', '1');
+          $this->session->set_userdata('level', 'user');
           $this->session->set_userdata('email', $user['email']);
           redirect('user/menu', 'refresh');
         } else {
           $this->session->set_userdata('login', '1');
+          $this->session->set_userdata('level', 'admin');
           $this->session->set_userdata('email', $user['email']);
           redirect('admin', 'refresh');
         }
@@ -54,15 +74,21 @@ class auth extends CI_Controller
 
   public function daftar()
   {
-    $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-    $this->form_validation->set_rules('email', 'Email', 'required|trim');
-    $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-    $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]');
-    $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-    if ($this->form_validation->run() == false) {
-      $this->load->view('home/daftar');
+    if ($this->session->userdata('level') == 'user') {
+      redirect('user/menu');
+    } elseif ($this->session->userdata('level') == 'admin') {
+      redirect('admin');
     } else {
-      $this->m_auth->daftar();
+      $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+      $this->form_validation->set_rules('email', 'Email', 'required|trim');
+      $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+      $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]|matches[password2]');
+      $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+      if ($this->form_validation->run() == false) {
+        $this->load->view('home/daftar');
+      } else {
+        $this->m_auth->daftar();
+      }
     }
   }
 }
