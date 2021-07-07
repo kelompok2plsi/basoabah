@@ -56,7 +56,7 @@
                   </tr>
               </a>
               <a class="dropdown-item text-center text-danger" href="<?= base_url('belanja/keranjang') ?>">Lihat Keranjang</a>
-              <a class="dropdown-item text-center text-success" href="#">Checkout</a>
+              <a class="dropdown-item text-center text-success" href="<?= base_url('pembayaran') ?>">Checkout</a>
             </div>
           </li>
           <li class="nav-item dropdown no-arrow">

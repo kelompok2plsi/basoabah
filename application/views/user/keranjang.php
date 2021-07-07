@@ -45,7 +45,7 @@
 
 					<div class="aksi mb-3 text-right">
 						<a href="<?= base_url('belanja/deleteall') ?>" class="btn btn-danger">Bersihkan Keranjang</a>
-						<a href="" class="btn btn-success">CheckOut</a>
+						<a href="<?= base_url('pembayaran') ?>" class="btn btn-success">CheckOut</a>
 					</div>
 					<?= form_close(); ?>
 				</div>
