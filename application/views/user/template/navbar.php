@@ -63,7 +63,7 @@
             <a class="nav-link dropdown-toggle mr-3 no-arrow" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:black; text-transform:uppercase;"><span class="ml-2"><?= $user['nama'] ?></span><i class="fas fa-user fa-sm ml-2"></i></a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <a class="dropdown-item" href="<?= base_url('user/password') ?>">
+              <a class="dropdown-item" href="<?= base_url('user/changepassword') ?>">
                 <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                 Ganti Password
               </a>

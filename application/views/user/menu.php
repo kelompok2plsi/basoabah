@@ -1,5 +1,6 @@
 <!-- CARD MENU -->
 <div class="container">
+  <?= $this->session->flashdata('message'); ?>
   <?php if ($this->session->flashdata('berhasil')) : ?>
     <div class="alert alert-success" role="alert">
       Berhasil ditambahkan ke Keranjang
