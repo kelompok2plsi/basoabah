@@ -23,4 +23,16 @@ class belanja extends CI_Controller
     $data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
     $this->load->view('user/keranjang', $data);
   }
+
+  public function delete($rowid)
+  {
+    $this->cart->remove($rowid);
+    return redirect('belanja/keranjang');
+  }
+
+  public function deleteall()
+  {
+    $this->cart->destroy();
+    return redirect('belanja/keranjang');
+  }
 }
