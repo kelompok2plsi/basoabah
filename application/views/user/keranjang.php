@@ -8,7 +8,7 @@
 					<table class="table table" style="width:100%">
 
 						<tr>
-							<th>Jumlah</th>
+							<th style="width: 85px;">Jumlah</th>
 							<th>Menu</th>
 							<th style="text-align:right">Harga satuan</th>
 							<th style="text-align:right">Sub-Total</th>
@@ -22,7 +22,16 @@
 							<?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
 
 							<tr>
-								<td><?= $items['qty']; ?></td>
+								<td><?= form_input(array(
+											'name' => $i .
+												'[qty]',
+											'value' => $items['qty'],
+											'maxlength' => '3',
+											'min' => '0',
+											'size' => '5',
+											'type' => 'number',
+											'class' => 'form-control'
+										)); ?></td>
 								<td><?= $items['name']; ?></td>
 								<td style="text-align:right">Rp.<?= $this->cart->format_number($items['price']); ?></td>
 								<td style="text-align:right">Rp.<?= $this->cart->format_number($items['subtotal']); ?></td>
@@ -44,8 +53,9 @@
 					</table>
 
 					<div class="aksi mb-3 text-right">
+						<button type="submit" class="btn btn-primary">Perbarui Keranjang</button>
 						<a href="<?= base_url('belanja/deleteall') ?>" class="btn btn-danger">Bersihkan Keranjang</a>
-						<a href="<?= base_url('pembayaran') ?>" class="btn btn-success">CheckOut</a>
+						<a href="<?= base_url('pembayaran') ?>" class="btn btn-success">Bayar</a>
 					</div>
 					<?= form_close(); ?>
 				</div>

@@ -61,4 +61,18 @@ class belanja extends CI_Controller
       redirect('auth/masuk', 'refresh');
     }
   }
+
+  public function update()
+  {
+    $i = 1;
+    foreach ($this->cart->contents() as $items) {
+      $data = array(
+        'rowid' => $items['rowid'],
+        'qty' => $this->input->post($i . '[qty]'),
+      );
+      $this->cart->update($data);
+      $i++;
+    }
+    redirect('belanja/keranjang');
+  }
 }

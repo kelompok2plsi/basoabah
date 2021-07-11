@@ -4,6 +4,7 @@
     <h1 class="h3 mb-0 text-gray-800">Menu</h1>
     <a href="<?= base_url('menu/tambah') ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Tambah</a>
   </div>
+  <?= $this->session->flashdata('pesan'); ?>
   <table class="table table-hover">
     <thead class="text-center">
       <tr>

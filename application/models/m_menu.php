@@ -54,7 +54,7 @@ class m_menu extends CI_Model
     $this->db->where('id', $this->input->post('id'));
     $this->db->update('tbl_menu', $data);
     if ($this->db->affected_rows() > 0) {
-      $this->session->set_flashdata('pesan', 'Diubah');
+      $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Menu Berhasil diubah</div>');
       redirect('menu', 'refresh');
     }
   }
