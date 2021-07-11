@@ -34,12 +34,13 @@
     </tbody>
   </table>
   <div class="card" style="width: 25%;">
+    <div class="card-header">
+      Keterangan
+    </div>
     <div class="card-body">
-      <h5 class="card-title">
-        <p>keterangan</p>
-      </h5>
-      <p>role_id '1' = user</p>
-      <p>role_id '2' = admin</p>
+      <p>role_id '1' = Admin</p>
+      <p>role_id '2' = User-Penjual</p>
+      <p>role_id '3' = User-Pembeli</p>
     </div>
   </div>
 </div>

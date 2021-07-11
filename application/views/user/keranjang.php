@@ -3,6 +3,7 @@
 		<div class="card-body container pb-0">
 			<div class="row">
 				<div class="col-sm-12">
+					<?= $this->session->flashdata('delete'); ?>
 					<?= form_open('belanja/update'); ?>
 
 					<table class="table table" style="width:100%">

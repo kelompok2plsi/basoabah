@@ -40,7 +40,7 @@
           <div class="alert alert-danger" role="alert">
             Anda belum berhasil login!
           </div>
-        <?php elseif ($this->session->flashdata('daftar')) : ?>
+        <?php elseif ($this->session->flashdata('pesan')) : ?>
           <div class="alert alert-success" role="alert">
             Akun Anda berhasil dibuat, silakan Masuk!
           </div>

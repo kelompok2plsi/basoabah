@@ -5,7 +5,7 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('penjual') ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
       </div>
@@ -14,41 +14,33 @@
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
+
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="<?= base_url('penjual') ?>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider ">
-    <div class="sidebar-heading">
-      Konfigurasi
-    </div>
-    <li class="nav-item">
-      <a class="nav-link" href="<?= base_url('menu') ?>">
-        <i class="fas fa-fw fa-book"></i>
-        <span>Menu</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<?= base_url('list_user') ?>">
-        <i class="fas fa-fw fa-user"></i>
-        <span>User</span></a>
-    </li>
-    <hr class="sidebar-divider ">
+    <hr class="sidebar-divider">
+    <!-- Heading -->
     <div class="sidebar-heading">
       Pesanan
     </div>
     <li class="nav-item">
-      <a class="nav-link" href="<?= base_url('admin/pesanan') ?>">
+      <a class="nav-link" href="<?= base_url('penjual/pesanan') ?>">
         <i class="fas fa-fw fa-book"></i>
         <span>Pesanan</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="<?= base_url('admin/detail') ?>">
-        <i class="fas fa-fw fa-user"></i>
+      <a class="nav-link" href="<?= base_url('penjual/detail') ?>">
+        <i class="fas fa-fw fa-sticky-note"></i>
         <span>Detail Pesanan</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<?= base_url('list_user') ?>">
+        <i class="fas fa-fw fa-id-card-alt"></i>
+        <span>Bukti Transfer</span></a>
     </li>
 
     <!-- Divider -->

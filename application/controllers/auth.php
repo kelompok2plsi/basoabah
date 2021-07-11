@@ -5,10 +5,12 @@ class auth extends CI_Controller
 {
   public function index()
   {
-    if ($this->session->userdata('level') == 'user') {
+    if ($this->session->userdata('level') == 'pembeli') {
       redirect('user/menu');
     } elseif ($this->session->userdata('level') == 'admin') {
       redirect('admin');
+    } elseif ($this->session->userdata('level') == 'penjual') {
+      redirect('penjual');
     } else {
       $this->load->view('home/index');
     }
@@ -16,10 +18,12 @@ class auth extends CI_Controller
 
   public function menu()
   {
-    if ($this->session->userdata('level') == 'user') {
+    if ($this->session->userdata('level') == 'pembeli') {
       redirect('user/menu');
     } elseif ($this->session->userdata('level') == 'admin') {
       redirect('admin');
+    } elseif ($this->session->userdata('level') == 'penjual') {
+      redirect('penjual');
     } else {
       $data['menu'] = $this->m_user->read();
       $this->load->view('home/menu', $data);
@@ -28,10 +32,12 @@ class auth extends CI_Controller
 
   public function masuk()
   {
-    if ($this->session->userdata('level') == 'user') {
+    if ($this->session->userdata('level') == 'pembeli') {
       redirect('user/menu');
     } elseif ($this->session->userdata('level') == 'admin') {
       redirect('admin');
+    } elseif ($this->session->userdata('level') == 'penjual') {
+      redirect('penjual');
     } else {
       $this->form_validation->set_rules('email', 'Email', 'required|trim');
       $this->form_validation->set_rules('password', 'Password', 'required|trim');
@@ -53,14 +59,19 @@ class auth extends CI_Controller
       if (password_verify($password, $user['password'])) {
         if ($user['role_id'] == 1) {
           $this->session->set_userdata('login', '1');
-          $this->session->set_userdata('level', 'user');
-          $this->session->set_userdata('email', $user['email']);
-          redirect('user/menu', 'refresh');
-        } else {
-          $this->session->set_userdata('login', '1');
           $this->session->set_userdata('level', 'admin');
           $this->session->set_userdata('email', $user['email']);
           redirect('admin', 'refresh');
+        } elseif ($user['role_id'] == 2) {
+          $this->session->set_userdata('login', '1');
+          $this->session->set_userdata('level', 'penjual');
+          $this->session->set_userdata('email', $user['email']);
+          redirect('penjual', 'refresh');
+        } else {
+          $this->session->set_userdata('login', '1');
+          $this->session->set_userdata('level', 'pembeli');
+          $this->session->set_userdata('email', $user['email']);
+          redirect('user/menu', 'refresh');
         }
       } else {
         $this->session->set_flashdata('salah_login', '1');
@@ -74,10 +85,12 @@ class auth extends CI_Controller
 
   public function daftar()
   {
-    if ($this->session->userdata('level') == 'user') {
+    if ($this->session->userdata('level') == 'pembeli') {
       redirect('user/menu');
     } elseif ($this->session->userdata('level') == 'admin') {
       redirect('admin');
+    } elseif ($this->session->userdata('level') == 'penjual') {
+      redirect('penjual');
     } else {
       $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
       $this->form_validation->set_rules('email', 'Email', 'required|trim');

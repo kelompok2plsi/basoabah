@@ -1,11 +1,9 @@
 <!-- CARD MENU -->
 <div class="container">
   <?= $this->session->flashdata('message'); ?>
-  <?php if ($this->session->flashdata('berhasil')) : ?>
-    <div class="alert alert-success" role="alert">
-      Berhasil ditambahkan ke Keranjang
-    </div>
-  <?php endif ?>
+  <?= $this->session->flashdata('berhasil'); ?>
+  <?= $this->session->flashdata('deleteall'); ?>
+
   <?php
   foreach ($menu as $data) : ?>
     <div class="card" style="width: auto; height:220px;">

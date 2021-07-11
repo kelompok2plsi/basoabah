@@ -15,7 +15,7 @@ class belanja extends CI_Controller
       );
 
       $this->cart->insert($data);
-      $this->session->set_flashdata('berhasil', '1');
+      $this->session->set_flashdata('berhasil', '<div class="alert alert-success" role="alert">Berhasil Menambahkan ke Keranjang!</div>');
       redirect($redirect_page);
     } else {
       $this->session->set_flashdata('belum_login', '1');
@@ -44,6 +44,8 @@ class belanja extends CI_Controller
   {
     if ($this->session->userdata('login') == '1') {
       $this->cart->remove($rowid);
+      $this->session->set_flashdata('delete', '<div class="alert alert-danger" role="alert">Pesanan dihapus dari Keranjang!</div>');
+
       return redirect('belanja/keranjang');
     } else {
       $this->session->set_flashdata('belum_login', '1');
@@ -55,7 +57,8 @@ class belanja extends CI_Controller
   {
     if ($this->session->userdata('login') == '1') {
       $this->cart->destroy();
-      return redirect('belanja/keranjang');
+      $this->session->set_flashdata('deleteall', '<div class="alert alert-danger" role="alert">Pesanan dihapus dari Keranjang!</div>');
+      return redirect('user/menu');
     } else {
       $this->session->set_flashdata('belum_login', '1');
       redirect('auth/masuk', 'refresh');

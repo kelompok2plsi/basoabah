@@ -15,7 +15,7 @@ class m_auth extends CI_Model
       'email' => $email,
       'alamat' => $alamat,
       'password' => $password,
-      'role_id' => '1',
+      'role_id' => '3',
     ];
 
     $this->db->insert('tbl_user', $data);

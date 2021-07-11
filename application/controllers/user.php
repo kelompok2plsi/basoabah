@@ -67,4 +67,36 @@ class user extends CI_Controller
       }
     }
   }
+
+  public function pesanan_saya()
+  {
+    if ($this->session->userdata('login') == '1') {
+      $data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
+      $this->db->order_by('id', 'Dsc');
+      $data['pesanan'] = $this->db->get_where('tbl_transaksi', ['id_user' => $data['user']['id']])->result_array();
+      $this->load->view('user/template/header');
+      $this->load->view('user/template/navbar', $data);
+      $this->load->view('user/pesanan_saya', $data);
+      $this->load->view('user/template/footer');
+    } else {
+      $this->session->set_flashdata('belum_login', '1');
+      redirect('auth/masuk', 'refresh');
+    }
+  }
+
+  public function detail_pesanan($no_order)
+  {
+    if ($this->session->userdata('login') == '1') {
+      $data['user'] = $this->db->get_where('tbl_user', ['email' => $this->session->userdata('email')])->row_array();
+      $data['nilai'] = $this->m_user->get_noder($no_order);
+      $data['menu'] = $this->m_user->menu();
+      $this->load->view('user/template/header');
+      $this->load->view('user/template/navbar', $data);
+      $this->load->view('user/detail_pesanan', $data);
+      $this->load->view('user/template/footer');
+    } else {
+      $this->session->set_flashdata('belum_login', '1');
+      redirect('auth/masuk', 'refresh');
+    }
+  }
 }

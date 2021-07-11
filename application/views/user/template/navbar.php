@@ -67,6 +67,10 @@
                 <i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                 Ganti Password
               </a>
+              <a class="dropdown-item" href="<?= base_url('user/pesanan_saya') ?>">
+                <i class="fas fa-shopping-bag fa-sm fa-fw mr-2 text-gray-400"></i>
+                Pesanan Saya
+              </a>
               <a class="dropdown-item" href="<?= base_url('user/logout') ?>">
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                 Logout
